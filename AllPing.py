@@ -1,10 +1,9 @@
-import platform
-import subprocess
-host="192.168.1.5"
-if platform.system().lower()=='windows': param = '-n'
-else: param ='-c'
-command = ['ping', '-a', param, '1', host]
-if subprocess.call(command) == 0:
-    print(host + " up")
+import os
+host = "192.168.1.1"
+if os.name=="nt":
+    response = os.system("ping -n 1 " + host)
+
+if response == 0:
+  print(host + ' is up!')
 else:
-    print(host + " down")
+  print(host +' is down!')
